@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Under Construction | GJ Sr. Secondary School</title>
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="shortcut icon" type="image/png" href="img/logo.png">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: #1a1f2b; color: #fff; text-align: center; padding: 100px 20px; }
+    .construction-box { max-width: 680px; margin: 0 auto; padding: 40px; background: rgba(0,0,0,0.45); border-radius: 8px; }
+    .construction-box h1 { font-size: 2.8rem; margin-bottom: 20px; }
+    .construction-box p { font-size: 1.18rem; margin-bottom: 15px; line-height: 1.5; }
+    .construction-box .status { color: #ffd700; font-weight: bold; }
+    .construction-box a { display: inline-block; padding: 10px 22px; margin-top: 20px; color: #1a1f2b; background: #fff; border-radius: 4px; text-decoration: none; font-weight: 700; }
+    .construction-box a:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="construction-box">
+    <img src="img/logo.png" width="100" alt="GJ Logo">
+    <h1>Coming Soon!</h1>
+    <p class="status">Website is currently under maintenance.</p>
+    <p>We’re putting the final touches on something amazing. Please check back in a few moments.</p>
+    <p>Estimated launch: within a few hours.</p>
+    <a href="index.html">Try Full Site</a>
+  </div>
+
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/maintenance-config.js"></script>
+  <script type="text/javascript">
+    // If maintenance is disabled, redirect back to site main page.
+    if (window.siteMaintenance && window.siteMaintenance.enabled === false) {
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

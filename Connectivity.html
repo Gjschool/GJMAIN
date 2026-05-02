@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GJ School | Connectivity</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="shortcut icon" type="image/png" href="img/logo.png">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link href="css/flexy-menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Passion+One:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+            background: #0f172a;
+            color: #f8fafc;
+        }
+        .connectivity-container {
+            max-width: 900px;
+            margin: 40px auto 80px;
+            padding: 0 15px;
+        }
+        .connectivity-title {
+            margin-bottom: 30px;
+            color: #ffffff;
+        }
+        .connectivity-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 0.03em;
+        }
+        .connectivity-title p {
+            color: #c5c7d1;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        .route-card {
+            background: rgba(27, 38, 62, 0.95);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 25px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.04);
+            color: #e5e7eb;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .search-bar:focus {
+            outline: none;
+            border-color: #38bdf8;
+            background: rgba(255,255,255,0.08);
+        }
+        .stop-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 18px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.03);
+            margin-bottom: 14px;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+        .stop-item:hover {
+            transform: translateY(-2px);
+            background: rgba(56, 189, 248, 0.08);
+        }
+        .icon-box {
+            width: 46px;
+            height: 46px;
+            background: rgba(56, 189, 248, 0.12);
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            color: #38bdf8;
+            flex-shrink: 0;
+        }
+        .stop-details {
+            flex-grow: 1;
+            min-width: 0;
+        }
+        .stop-name {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f8fafc;
+        }
+        .status-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(34, 197, 94, 0.16);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            white-space: nowrap;
+        }
+        @media (max-width: 768px) {
+            .connectivity-container { margin: 20px auto 60px; }
+            .connectivity-title h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+<header class="clearfix">
+    <div class="box">
+        <div class="container">
+            <div class="header-element clearfix">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img class="img-responsive" src="img/logo.png" alt="GJ logo"><span class="school-name">G.J. Sr. Secondary School</span></a></h1>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="flexy-menu orange">
+                            <li><a href="index.html"><i class="icon-heart"></i>Home</a></li>
+                            <li><a href="about.html"><i class="icon-cogs"></i>About</a></li>
+                            <li><a href="faculty.html"><i class="icon-th"></i>Faculty</a></li>
+                            <li><a href="admissions.html"><i class="icon-th"></i>Admissions</a></li>
+                            <li><a href="blog.html"><i class="icon-th"></i>Blog</a></li>
+                            <li class="active"><a href="Connectivity.html"><i class="icon-th"></i>Connectivity</a></li>
+                            <li><a href="contact.html"><i class="icon-envelope"></i>Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="connectivity-container">
+    <div class="connectivity-title">
+        <h2>Connectivity Dashboard</h2>
+        <p>Check live route availability, stop access, and bus status for the school network.</p>
+    </div>
+    <div class="route-card">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search for your ..." onkeyup="filterStops()">
+        <div id="routeContainer"></div>
+    </div>
+</div>
+<script>
+    const stops = [
+        "Hisar", "Gangwa", "Muklan", "Bheria", "Panihar chawk", 
+        "Chaudhriwas", "Kalwas", "Chirod", "Rawatkhera", "Payal", 
+        "Charnaud", "Talwandi rukka", "Talwandi badshapur", 
+        "Shingran", "Mangali all wings", "Tokas Patan"
+    ];
+    const container = document.getElementById('routeContainer');
+    function displayStops(filter = '') {
+        container.innerHTML = '';
+        stops.forEach(stop => {
+            if (stop.toLowerCase().includes(filter.toLowerCase())) {
+                const div = document.createElement('div');
+                div.className = 'stop-item';
+                div.innerHTML = `
+                    <div class="icon-box"><i class="fas fa-bus-alt"></i></div>
+                    <div class="stop-details">
+                        <span class="stop-name">${stop}</span>
+                    </div>
+                    <span class="status-badge">Available</span>
+                `;
+                container.appendChild(div);
+            }
+        });
+    }
+    function filterStops() {
+        const val = document.getElementById('searchInput').value;
+        displayStops(val);
+    }
+    displayStops();
+</script>
+<script type="text/javascript" src="js/library/flexy-menu.js"></script>
+</body>
+</html>

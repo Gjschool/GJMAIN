@@ -152,6 +152,10 @@
 })();
 </script>
 
+</body>
+</html>
+				
+	
 	<!--Begin for student -->
     <div class="for-students">
         <div class="container"> 
@@ -206,156 +210,53 @@ const API_KEY = "AIzaSyAtubqGlyMuBxnIdfPZDJ0fVC09Tj3-Kn8";
 <style>
 /* ===== COMMON SCROLL STYLE ===== */
 .scroll-wrapper {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     width: 100%;
     margin-top: 30px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-.scroll-wrapper::-webkit-scrollbar {
-    height: 8px;
-}
-
-.scroll-wrapper::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.scroll-wrapper::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.18);
-    border-radius: 999px;
 }
 
 .scroll-container {
     display: flex;
-    gap: 18px;
+    gap: 10px;
     width: max-content;
-    padding-bottom: 12px;
-    scroll-snap-type: x mandatory;
 }
 
-.scroll-container > .card-box {
-    scroll-snap-align: start;
+/* ===== EVENTS ===== */
+#events {
+    animation: scrollEvents 30s linear infinite;
 }
 
-.du-events,
-.du-graduate-success-story {
-    position: relative;
-    overflow: hidden;
-    padding: 62px 0 67px 0;
-    background: #f2f2f2 url(img/triangle2.png) center top no-repeat;
-}
-
-.du-events .container,
-.du-graduate-success-story .container {
-    position: relative;
-}
-
-.du-events h2.center,
-.du-graduate-success-story h2.center {
-    color: #ffffff;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
+/* ===== STUDENTS ===== */
+#students {
+    animation: scrollStudents 25s linear infinite;
 }
 
 /* ===== CARD DESIGN (SAME FOR BOTH) ===== */
 .card-box {
-    min-width: 280px;
-    max-width: 340px;
-    background: #ffffff;
-    border-radius: 24px;
+    min-width: 320px;
+    background: #f3f4f5;
+    border-radius: 0;
     overflow: hidden;
-    margin: 0;
-    box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
-    text-align: left;
-    padding: 0;
-    flex-shrink: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	margin:0;
+    box-shadow: none
+    text-align: center;
+	padding: 0;
+	flex-shrink: 0;
 }
 
-.card-box:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 26px 60px rgba(15, 23, 42, 0.2);
-}
-
-.card-image {
-    position: relative;
-    overflow: hidden;
-    height: 220px;
-    background: linear-gradient(180deg, #e2e8f0 0%, #f8fafc 100%);
-}
-
-.card-image img {
+.card-box img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.card-tag {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(32, 172, 184, 0.95);
-    color: #ffffff;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.card-content {
-    padding: 18px 18px 22px;
+    height: 230px;
+    object-fit: contain;
+	display:block;
+	background: #eeeeee;
 }
 
 .card-box h3 {
-    margin: 0 0 10px;
-    font-size: 1.2rem;
-    line-height: 1.35;
-    font-weight: 700;
+    padding: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
     color: #111827;
-}
-
-.card-box p {
-    margin: 0;
-    color: #4b5563;
-    font-size: 0.96rem;
-    line-height: 1.6;
-}
-
-.card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.35));
-}
-
-@media (max-width: 992px) {
-    .card-box {
-        min-width: 260px;
-    }
-}
-
-@media (max-width: 768px) {
-    .scroll-container {
-        gap: 14px;
-        padding-bottom: 16px;
-    }
-
-    .card-box {
-        min-width: 240px;
-        max-width: 260px;
-    }
-}
-
-@media (max-width: 520px) {
-    .card-box {
-        min-width: 200px;
-        max-width: 220px;
-    }
 }
 
 /* ===== ANIMATIONS ===== */
@@ -398,15 +299,8 @@ fetch(`https://www.googleapis.com/drive/v3/files?q='${EVENTS_FOLDER_ID}'+in+pare
 
         html += `
         <div class="card-box">
-            <div class="card-image">
-                <img src="${img}" alt="${name}">
-                <span class="card-tag">Event</span>
-                <div class="card-overlay"></div>
-            </div>
-            <div class="card-content">
-                <h3>${name}</h3>
-                <p>Check this upcoming school event and stay prepared.</p>
-            </div>
+            <img src="${img}">
+            <h3>${name}</h3>
         </div>`;
     });
 
@@ -445,15 +339,8 @@ fetch(`https://www.googleapis.com/drive/v3/files?q='${STUDENT_FOLDER_ID}'+in+par
 
         html += `
         <div class="card-box">
-            <div class="card-image">
-                <img src="${img}" alt="${name}">
-                <span class="card-tag">Student</span>
-                <div class="card-overlay"></div>
-            </div>
-            <div class="card-content">
-                <h3>${name}</h3>
-                <p>Celebrating the achievements of our brilliant learners.</p>
-            </div>
+            <img src="${img}">
+            <h3>${name}</h3>
         </div>`;
     });
 
@@ -489,6 +376,8 @@ fetch(`https://www.googleapis.com/drive/v3/files?q='${STUDENT_FOLDER_ID}'+in+par
 
 
     <!-- Main jQuery & other 3rd party Library -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
     <script type='text/javascript' src='js/maintenance-config.js'></script>
 	<script type="text/javascript" src="js/library/jquery.easing.1.3.js"></script>
 	
@@ -497,10 +386,12 @@ fetch(`https://www.googleapis.com/drive/v3/files?q='${STUDENT_FOLDER_ID}'+in+par
 	<!-- UI bottom to top JS -->
 	<script type="text/javascript" src="js/library/jquery.ui.totop.js"></script>
 	<!-- Subscription JS -->
-	<script type="text/javascript" src="js/library/sForm.js"></script>
+	<script type="text/javascript" src="js/library/sForm.js"></script>	
 	<!-- Animation JS -->
 	<script type="text/javascript" src="js/library/wow.js"></script>
 	<script type="text/javascript" src="js/library/device.min.js"></script>
+	<!-- Menu JS -->
+	<script type="text/javascript" src="js/library/flexy-menu.js"></script>
 	<!-- Text rotator JS -->
 	<script type="text/javascript" src="js/library/jquery.simple-text-rotator.min.js"></script>
 	<!-- Smooth Scroll JS -->
@@ -509,6 +400,75 @@ fetch(`https://www.googleapis.com/drive/v3/files?q='${STUDENT_FOLDER_ID}'+in+par
 	<!-- Testimonila JS -->
 	<script type="text/javascript" src="js/library/jquery.cubeportfolio.min.js"></script>
 	<script type="text/javascript" src="js/library/testimonials.js"></script>
+	<!-- Custom script -->
+	<script type="text/javascript" src="js/main.js"></script>
+
+	<!-- Slider JavaScript -->
+	<script>
+	// Slideshow functionality
+	(function() {
+		const container = document.getElementById('sliderContainer');
+		const items = container.querySelectorAll('.carousel-item');
+		const prevBtn = document.getElementById('sliderPrev');
+		const nextBtn = document.getElementById('sliderNext');
+		const indicatorsContainer = document.getElementById('sliderIndicators');
+		
+		let currentIndex = 0;
+		let autoSlideTimer = null;
+		
+		// Create indicators
+		items.forEach((_, idx) => {
+			const dot = document.createElement('span');
+			dot.className = 'slider-dot' + (idx === 0 ? ' active' : '');
+			dot.addEventListener('click', () => goToSlide(idx));
+			indicatorsContainer.appendChild(dot);
+		});
+		
+		function showSlide(index) {
+			items.forEach(item => item.classList.remove('active'));
+			document.querySelectorAll('.slider-dot').forEach(dot => dot.classList.remove('active'));
+			items[index].classList.add('active');
+			document.querySelectorAll('.slider-dot')[index].classList.add('active');
+			currentIndex = index;
+		}
+		
+		function nextSlide() {
+			showSlide((currentIndex + 1) % items.length);
+		}
+		
+		function prevSlide() {
+			showSlide((currentIndex - 1 + items.length) % items.length);
+		}
+		
+		function goToSlide(index) {
+			showSlide(index);
+			resetAutoSlide();
+		}
+		
+		function startAutoSlide() {
+			autoSlideTimer = setInterval(nextSlide, 3500);
+		}
+		
+		function resetAutoSlide() {
+			clearInterval(autoSlideTimer);
+			startAutoSlide();
+		}
+		
+		prevBtn.addEventListener('click', () => {
+			prevSlide();
+			resetAutoSlide();
+		});
+		
+		nextBtn.addEventListener('click', () => {
+			nextSlide();
+			resetAutoSlide();
+		});
+		
+		startAutoSlide();
+	})();
+	</script>
+
+	
   </body>
 </html>
 

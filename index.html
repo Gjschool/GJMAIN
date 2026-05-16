@@ -208,77 +208,63 @@ const API_KEY = "AIzaSyAtubqGlyMuBxnIdfPZDJ0fVC09Tj3-Kn8";
 </script>
 
 <style>
-/* ===== COMMON SCROLL STYLE ===== */
 .scroll-wrapper {
     overflow: hidden;
     width: 100%;
     margin-top: 30px;
 }
-
 .scroll-container {
     display: flex;
     gap: 0;
     width: max-content;
 }
-
-/* ===== EVENTS ===== */
-#events {
-    animation: scroll 25s linear infinite;
-}
-
-/* ===== STUDENTS ===== */
-#students {
-    animation: scroll 25s linear infinite;
-}
-
-/* ===== CARD DESIGN (SAME FOR BOTH) ===== */
-.card-box {
-    min-width: 300px;
-    width: 320px;
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    overflow: hidden;
-    text-align: center;
-    flex: 0 0 320px;
-    background: #f3f4f5;
-}
-
-.card-box img {
-    width: 100%;
-    height: 280px;
-    object-fit: contain;
-    display: block;
-    background: #f3f4f5;
-}
-
-.card-box h3 {
-    margin: 0;
-    padding: 10px 14px;
-    font-size: 13px;
-    font-weight: 600;
-    background: #f3f4f5;
-    text-align: center;
-    color: #111827;
-    white-space: normal;
-    word-break: break-word;
-    
-    min-height: 48px;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes scroll {
-    0% { transform: translateX(0); }
+#events  { animation: scrollLeft 30s linear infinite; }
+#students{ animation: scrollLeft 30s linear infinite; }
+@keyframes scrollLeft {
+    0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
-
+.card-box {
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+    height: 340px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    flex: 0 0 320px !important;
+    background: #f3f4f5 !important;
+    display: inline-flex !important;
+    flex-direction: column !important;
+}
+.card-box img {
+    width: 320px !important;
+    max-width: 320px !important;
+    height: 280px !important;
+    max-height: 280px !important;
+    object-fit: contain !important;
+    display: block !important;
+    background: #f3f4f5 !important;
+    margin: 0 !important;
+}
+.card-box h3 {
+    margin: 0 !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    background: #f3f4f5 !important;
+    color: #111827 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    min-height: 48px !important;
+}
 @media (max-width: 600px) {
-    .card-box {
-        width: 80vw;
-        flex: 0 0 80vw;
+    .card-box, .card-box img, .card-box h3 {
+        width: 80vw !important;
+        max-width: 80vw !important;
     }
+    .card-box { flex: 0 0 80vw !important; }
 }
 </style>
 

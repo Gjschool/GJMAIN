@@ -223,7 +223,7 @@ const API_KEY = "AIzaSyAtubqGlyMuBxnIdfPZDJ0fVC09Tj3-Kn8";
 
 /* ===== EVENTS ===== */
 #events {
-    animation: scroll 30s linear infinite;
+    animation: scroll 25s linear infinite;
 }
 
 /* ===== STUDENTS ===== */
@@ -233,32 +233,38 @@ const API_KEY = "AIzaSyAtubqGlyMuBxnIdfPZDJ0fVC09Tj3-Kn8";
 
 /* ===== CARD DESIGN (SAME FOR BOTH) ===== */
 .card-box {
+    min-width: 300px;
     width: 320px;
     margin: 0;
     padding: 0;
     border: none;
     box-shadow: none;
     border-radius: 0;
-    overflow: hidden;
+    overflow: visible;
     text-align: center;
     flex: 0 0 320px;
 }
 
 .card-box img {
     width: 100%;
-    height: 230px;
-    object-fit: cover;
+    height: 280px;
+    object-fit: contain;
     display: block;
+    background: #ffffff;
 }
 
 .card-box h3 {
     margin: 0;
-    padding: 10px 12px;
-    font-size: 14px;
+    padding: 10px 14px;
+    font-size: 13px;
     font-weight: 600;
     background: #ffffff;
     text-align: center;
     color: #111827;
+    white-space: normal;
+    word-break: break-word;
+    overflow: visible;
+    min-height: 48px;
 }
 
 /* ===== ANIMATIONS ===== */

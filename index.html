@@ -217,57 +217,61 @@ const API_KEY = "AIzaSyAtubqGlyMuBxnIdfPZDJ0fVC09Tj3-Kn8";
 
 .scroll-container {
     display: flex;
-    gap: 10px;
+    gap: 0;
     width: max-content;
 }
 
 /* ===== EVENTS ===== */
 #events {
-    animation: scrollEvents 30s linear infinite;
+    animation: scroll 30s linear infinite;
 }
 
 /* ===== STUDENTS ===== */
 #students {
-    animation: scrollStudents 25s linear infinite;
+    animation: scroll 25s linear infinite;
 }
 
 /* ===== CARD DESIGN (SAME FOR BOTH) ===== */
 .card-box {
-    min-width: 320px;
-    background: #f3f4f5;
+    width: 320px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
     border-radius: 0;
     overflow: hidden;
-	margin:0;
-    box-shadow: none
     text-align: center;
-	padding: 0;
-	flex-shrink: 0;
+    flex: 0 0 320px;
 }
 
 .card-box img {
     width: 100%;
     height: 230px;
-    object-fit: contain;
-	display:block;
-	background: #eeeeee;
+    object-fit: cover;
+    display: block;
 }
 
 .card-box h3 {
-    padding: 15px;
-    font-size: 1.3rem;
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 14px;
     font-weight: 600;
+    background: #ffffff;
+    text-align: center;
     color: #111827;
 }
 
 /* ===== ANIMATIONS ===== */
-@keyframes scrollEvents {
+@keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
 
-@keyframes scrollStudents {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+@media (max-width: 600px) {
+    .card-box {
+        width: 80vw;
+        flex: 0 0 80vw;
+    }
 }
 </style>
 
